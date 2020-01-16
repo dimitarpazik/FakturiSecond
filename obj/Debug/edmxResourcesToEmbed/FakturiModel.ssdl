@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MoiFakturiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Clients">
+    <Key>
+      <PropertyRef Name="Client_ID" />
+    </Key>
+    <Property Name="Client_ID" Type="int" Nullable="false" />
+    <Property Name="Client_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Client_Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Client_TFN" Type="nvarchar" MaxLength="50" />
+    <Property Name="Client_Address" Type="nvarchar" MaxLength="50" />
+    <Property Name="Client_City" Type="nvarchar" MaxLength="50" />
+    <Property Name="Client_State" Type="nvarchar" MaxLength="50" />
+    <Property Name="Client_CityPostCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Client_Signature" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Faktura">
+    <Key>
+      <PropertyRef Name="Faktura_ID" />
+    </Key>
+    <Property Name="Faktura_ID" Type="int" Nullable="false" />
+    <Property Name="Firm_ID" Type="int" />
+    <Property Name="Client_ID" Type="int" />
+    <Property Name="Faktura_Status" Type="int" />
+    <Property Name="Faktura_Suma" Type="float" />
+    <Property Name="Faktura_DatumIzdavanje" Type="datetime" />
+    <Property Name="Faktura_DatumDospevanje" Type="datetime" />
+    <Property Name="Faktura_TotalDDV" Type="float" />
+    <Property Name="Faktura_Zabeleska" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Firm">
+    <Key>
+      <PropertyRef Name="Firm_ID" />
+    </Key>
+    <Property Name="Firm_ID" Type="int" Nullable="false" />
+    <Property Name="Firm_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Firm_Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Firm_Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="Firm_Address" Type="nvarchar" MaxLength="50" />
+    <Property Name="Firm_City" Type="nvarchar" MaxLength="50" />
+    <Property Name="Firm_State" Type="nvarchar" MaxLength="50" />
+    <Property Name="Firm_PhoneNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="Firm_WebPage" Type="nvarchar" MaxLength="50" />
+    <Property Name="Firm_TFN" Type="nvarchar" MaxLength="50" />
+    <Property Name="Firm_TransactionAccount" Type="nvarchar" MaxLength="50" />
+    <Property Name="Firm_Bank" Type="nvarchar" MaxLength="50" />
+    <Property Name="Firm_CityPostCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Firm_Logo" Type="nvarchar" MaxLength="50" />
+    <Property Name="Firm_Signature" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="Product_ID" />
+    </Key>
+    <Property Name="Product_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Product_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Product_Price" Type="float" />
+    <Property Name="Product_DDV_Percent" Type="int" />
+    <Property Name="Product_Price_with_DDV" Type="float" />
+    <Property Name="Firm_ID" Type="int" />
+  </EntityType>
+  <Association Name="FK_Faktura_Clients">
+    <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
+    <End Role="Faktura" Type="Self.Faktura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="Client_ID" />
+      </Principal>
+      <Dependent Role="Faktura">
+        <PropertyRef Name="Client_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Faktura_Firm">
+    <End Role="Firm" Type="Self.Firm" Multiplicity="0..1" />
+    <End Role="Faktura" Type="Self.Faktura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Firm">
+        <PropertyRef Name="Firm_ID" />
+      </Principal>
+      <Dependent Role="Faktura">
+        <PropertyRef Name="Firm_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Products_Firm">
+    <End Role="Firm" Type="Self.Firm" Multiplicity="0..1" />
+    <End Role="Products" Type="Self.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Firm">
+        <PropertyRef Name="Firm_ID" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="Firm_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MoiFakturiModelStoreContainer">
+    <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Faktura" EntityType="Self.Faktura" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Firm" EntityType="Self.Firm" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Faktura_Clients" Association="Self.FK_Faktura_Clients">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="Faktura" EntitySet="Faktura" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Faktura_Firm" Association="Self.FK_Faktura_Firm">
+      <End Role="Firm" EntitySet="Firm" />
+      <End Role="Faktura" EntitySet="Faktura" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Products_Firm" Association="Self.FK_Products_Firm">
+      <End Role="Firm" EntitySet="Firm" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,314 @@
+﻿@model FakturiSecond.Firm
+
+@{
+    ViewBag.Title = "Мојата компанија";
+    Layout = "~/Views/Dashboard/Layout.cshtml";
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fjalla+One|Montserrat:300,400,700,800|Open+Sans:300" />
+}
+
+@*<p align="right">
+    <button class="btn btn-outline-warning btn-lg" type="button">@Html.ActionLink("Промени", "Edit", new { id = Model.Firm_ID })</button>
+</p>*@
+
+<html>
+
+<body>
+    <main>
+        <div class="card">
+            <div class="card__title">
+                <div class="icon"></div>
+                <h3><i class="fa fa-phone"></i> @Model.Firm_PhoneNumber</h3>
+            </div>
+            <div class="card__body">
+                <div class="half">
+                    <div class="featured_text">
+                        <h1>@Model.Firm_Name</h1>
+                        <p class="sub"><i class="fa fa-map-marker"></i> @Model.Firm_Address</p>
+                        <p class="sub_sub">@Model.Firm_CityPostCode, @Model.Firm_City, @Model.Firm_State</p>
+                    </div>
+                    <div class="image">
+                        <img src="~/images/FirmLogo/@Model.Firm_Logo" alt="">
+                    </div>
+                </div>
+                <div class="half">
+                    <div class="description">
+                        <p><i class="fa fa-shopping-bag"></i> Даночен број (TFN): @Model.Firm_TFN</p>
+                        <p><i class="fa fa-credit-card"></i> Т-циска сметка: @Model.Firm_TransactionAccount</p>
+                        <p><i class="fa fa-university"></i> Банка: @Model.Firm_Bank</p>
+
+                    </div>
+                    <p align="center"><span class="stock"></i> Електронски потпис </span></p>
+                    <div class="imageSignature">
+                        <div class="circle-1"></div>
+                        <div class="circle-2"></div>
+                        <img src="~/images/FirmSignature/@Model.Firm_Signature" width="70" height="70" alt="Jessica Potter">
+                    </div>                    
+                </div>
+            </div>
+            <div class="card__footer">
+                <div class="recommend">
+                    <p><i class="fa fa-globe"></i> Веб страна</p>
+                    <h3>@Model.Firm_WebPage</h3>
+                </div>
+                <div class="action">
+                    <button type="button" class="btn-outline-warning btn-lg">@Html.ActionLink("Промени", "Edit", new { id = Model.Firm_ID })</button>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
+
+<style>
+
+    main {
+        max-width: 720px;
+        margin: 5% auto;
+    }
+
+    .card {
+        box-shadow: 0 6px 6px rgba(0, 0, 0, 0.3);
+        transition: 200ms;
+        background: #fff;
+    }
+
+        .card .card__title {
+            display: flex;
+            align-items: center;
+            padding: 30px 40px;
+        }
+
+            .card .card__title h3 {
+                flex: 0 1 200px;
+                text-align: right;
+                margin: 0;
+                color: #252525;
+                font-family: sans-serif;
+                font-weight: 600;
+                font-size: 20px;
+                text-transform: uppercase;
+            }
+
+            .card .card__title .icon {
+                flex: 1 0 10px;
+                background: #115dd8;
+                color: #fff;
+                padding: 10px 10px;
+                transition: 200ms;
+            }
+
+                .card .card__title .icon > a {
+                    color: #fff;
+                }
+
+                .card .card__title .icon:hover {
+                    background: #252525;
+                }
+
+        .card .card__body {
+            padding: 0 40px;
+            display: flex;
+            flex-flow: row no-wrap;
+            margin-bottom: 25px;
+        }
+
+            .card .card__body > .half {
+                box-sizing: border-box;
+                padding: 0 15px;
+                flex: 1 0 50%;
+                border-left: 1px solid #115dd8;
+            }
+
+            .card .card__body .featured_text h1 {
+                margin: 0;
+                padding: 0;
+                font-weight: 800;
+                font-family: "Montserrat", sans-serif;
+                font-size: 64px;
+                line-height: 50px;
+                color: #181e28;
+            }
+
+            .card .card__body .imageSignature {
+                position: relative;
+                width: 100px;
+                height: 100px;
+                margin: 20px auto 0 auto;
+            }
+
+                .card .card__body .imageSignature .circle-1, .card .card__body .imageSignature .circle-2 {
+                    position: absolute;
+                    box-sizing: border-box;
+                    width: 106px;
+                    height: 106px;
+                    top: -3px;
+                    left: -3px;
+                    border-width: 1px;
+                    border-style: solid;
+                    border-color: #786450 #786450 #786450 transparent;
+                    border-radius: 50%;
+                    transition: all 1.5s ease-in-out;
+                }
+
+                .card .card__body .imageSignature .circle-2 {
+                    width: 112px;
+                    height: 112px;
+                    top: -6px;
+                    left: -6px;
+                    border-color: #786450 transparent #786450 #786450;
+                }
+
+                .card .card__body .imageSignature img {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                    background: #F8F8F8;
+                }
+
+                .card .card__body .imageSignature:hover {
+                    cursor: pointer;
+                }
+
+                    .card .card__body .imageSignature:hover .circle-1, .card .card__body .imageSignature:hover .circle-2 {
+                        -webkit-transform: rotate(360deg);
+                        transform: rotate(360deg);
+                    }
+
+                    .card .card__body .imageSignature:hover .circle-2 {
+                        -webkit-transform: rotate(-360deg);
+                        transform: rotate(-360deg);
+                    }
+
+            .card .card__body .featured_text p {
+                margin: 0;
+                padding: 0;
+            }
+
+                .card .card__body .featured_text p.sub {
+                    font-family: "Montserrat", sans-serif;
+                    font-size: 15px;
+                    text-transform: uppercase;
+                    color: #686e77;
+                    font-weight: 300;
+                    margin-bottom: 2px;
+                }
+
+                .card .card__body .featured_text p.sub_sub {
+                    font-family: "Montserrat", sans-serif;
+                    font-size: 13px;
+                    text-transform: uppercase;
+                    color: #555;
+                    font-weight: 300;
+                    margin-bottom: 5px;
+                }
+
+                .card .card__body .featured_text p.price {
+                    font-family: "Fjalla One", sans-serif;
+                    color: #252525;
+                    font-size: 26px;
+                }
+
+            .card .card__body .image {
+                padding-top: 15px;
+                width: 100%; 
+               
+            }
+
+                .card .card__body .image img {
+                    display: block;
+                    max-width: 100%;
+                    max-height: 250px;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+
+            .card .card__body .description {
+                margin-top: 10px;
+                margin-bottom: 25px;
+            }
+
+                .card .card__body .description p {
+                    margin: 0;
+                    font-family: "Open Sans", sans-serif;
+                    font-weight: 300;
+                    line-height: 27px;
+                    font-size: 16px;
+                    color: #555;
+                }
+
+            .card .card__body span.stock {
+                font-family: "Montserrat", sans-serif;
+                font-weight: 600;
+                color: #115dd8;
+                align-content: center;
+            }
+            
+
+            .card .card__body .reviews > span {
+                font-family: "Open Sans", sans-serif;
+                font-size: 14px;
+                margin-left: 5px;
+                color: #555;
+            }
+
+        .card .card__footer {
+            padding: 30px 40px;
+            display: flex;
+            flex-flow: row no-wrap;
+            align-items: center;
+            position: relative;
+        }
+
+            .card .card__footer::before {
+                content: "";
+                position: absolute;
+                display: block;
+                top: 0;
+                left: 40px;
+                width: calc(100% - 40px);
+                height: 3px;
+                background: #115dd8;
+                background: linear-gradient(to right, #115dd8 0%, #115dd8 20%, #ddd 20%, #ddd 100%);
+            }
+
+            .card .card__footer .recommend {
+                flex: 1 0 10px;
+            }
+
+                .card .card__footer .recommend p {
+                    margin: 0;
+                    font-family: "Montserrat", sans-serif;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    font-size: 14px;
+                    color: #555;
+                }
+
+                .card .card__footer .recommend h3 {
+                    margin: 0;
+                    font-size: 20px;
+                    font-family: "Montserrat", sans-serif;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    color: #115dd8;
+                }
+
+            .card .card__footer .action button {
+                cursor: pointer;
+                border: 1px solid #115dd8;
+                padding: 14px 30px;
+                border-radius: 200px;
+                color: #fff;
+                background: #115dd8;
+                font-family: "Open Sans", sans-serif;
+                font-size: 16px;
+                transition: 200ms;
+            }
+
+                .card .card__footer .action button:hover {
+                    background: #fff;
+                    color: #115dd8;
+                }
+</style>

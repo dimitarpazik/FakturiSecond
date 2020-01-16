@@ -1,0 +1,149 @@
+﻿@model FakturiSecond.Clients
+
+@{
+    ViewBag.Title = "Детали за клиент";
+    Layout = "~/Views/Dashboard/Layout.cshtml";
+}
+
+<h2>Детали за клиент #@Model.Client_ID</h2>
+<p align="right">
+    <button class="btn btn-outline-warning btn-lg" type="button">@Html.ActionLink("Промени", "Edit", new { id = Model.Client_ID })</button>
+</p>
+<div>
+    <hr />
+    <div class="business-card clearfix">
+        <div class="business-card-profile">
+            <img class="business-card-pic" src="~/images/ClientSignature/@Model.Client_Signature" alt="profile picture" />
+            <p class="business-card-name">@Model.Client_Name</p>
+            <p class="business-card-title">Клиент #@Model.Client_ID</p>
+        </div>
+        <div class="business-card-arrow"></div>
+        <div class="business-card-details">
+            <p><i class="fa fa-envelope"></i> @Model.Client_Email</p>
+            <p><i class="fa fa-shopping-bag"></i> @Model.Client_TFN</p>
+            <p><i class="fa fa-address-card"></i> @Model.Client_Address</p>
+            <p><i class="fa fa-map-marker"></i> @Model.Client_CityPostCode, @Model.Client_City</p>
+            <p><i class="fa fa-globe"></i> @Model.Client_State</p>
+        </div>
+    </div>
+    <br />
+</div>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+
+<p>
+    @Html.ActionLink("<- Мои клиенти", "Index" )
+</p>
+
+<style>
+
+    .business-card {
+        width: 650px;
+        height: 250px;
+        background: #2D3035;
+        position: relative;
+    }
+
+    .business-card-profile {
+        float: left;
+        background: #3D4045;
+        width: 276px;
+        height: 250px;
+    }
+
+    /* grayscale thanks to http://thenewcode.com/532/Convert-Images-To-Black-And-White-With-CSS */
+
+    .business-card-pic {
+        width: 150px;
+        display: block;
+        padding: 3px;
+        background: white;
+        border-radius: 150px;
+        border: solid 7px #54575f;
+        margin: 0 auto;
+        margin-top: 50px;
+        -webkit-filter: grayscale(100%);
+        filter: grayscale(100%);
+        filter: gray;
+        filter: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' height='0'><filter id='greyscale'><feColorMatrix type='matrix' values='0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0' /></filter></svg>#greyscale");
+    }
+
+    .business-card-name, .business-card-title {
+        line-height: 0px;
+        text-align: center;
+        font-family: "dosis";
+        color: white;
+        font-size: 20px;
+        margin-top: 20px;
+    }
+
+    .business-card-name {
+        font-weight: bold;
+    }
+
+    .business-card-title {
+        color: #999999;
+        line-height: 5px;
+        font-size: 16px;
+    }
+
+    /* arrow thanks to : https://jsfiddle.net/josedvq/3HG6d/ */
+
+    .business-card-arrow {
+        width: 0;
+        height: 0;
+        padding-top: 3%;
+        padding-bottom: 3%;
+        padding-left: 3%;
+        overflow: hidden;
+        position: absolute;
+        top: calc(50% - 20px);
+        left: 270px;
+    }
+
+        .business-card-arrow:after {
+            content: "";
+            display: block;
+            width: 0;
+            height: 0;
+            margin-top: -20px;
+            margin-left: -20px;
+            border-top: 20px solid transparent;
+            border-bottom: 20px solid transparent;
+            border-left: 20px solid #3D4045;
+        }
+
+    /* -----------------
+     Details(right side)
+    ------------------- */
+    .business-card-details {
+        float: right;
+        font-family: "Montserrat";
+        color: #e6e6e6;
+        font-size: 13px;
+        line-height: 20px;
+        width: 330px;
+        height: 225px;
+        display: inline-block;
+        overflow: hidden;
+        margin-top: 25px;
+    }
+
+        .business-card-details .fa {
+            color: #d9d9d9;
+            width: 20px;
+            font-size: 20px;
+            text-align: center;
+            margin-right: 10px;
+        }
+
+    .business-card-link {
+        color: #2A7F9C;
+        text-decoration: none;
+    }
+
+    .clearfix {
+        overflow: auto;
+        zoom: 1;
+    }
+</style>

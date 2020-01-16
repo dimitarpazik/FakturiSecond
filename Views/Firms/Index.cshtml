@@ -1,0 +1,48 @@
+﻿@model IEnumerable<FakturiSecond.Firm>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Dashboard/Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Назив на компанија
+        </th>
+        <th>
+            Е-маил на компанија
+        </th>
+        <th>
+            Адреса на компанија
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Firm_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Firm_Email)
+        </td>        
+        <td>
+            @Html.DisplayFor(modelItem => item.Firm_Address)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Firm_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Firm_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Firm_ID })
+        </td>
+    </tr>
+}
+
+</table>

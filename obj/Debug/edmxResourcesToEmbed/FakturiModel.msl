@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MoiFakturiModelStoreContainer" CdmEntityContainer="MoiFakturiEntities">
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="MoiFakturiModel.Clients">
+        <MappingFragment StoreEntitySet="Clients">
+          <ScalarProperty Name="Client_ID" ColumnName="Client_ID" />
+          <ScalarProperty Name="Client_Name" ColumnName="Client_Name" />
+          <ScalarProperty Name="Client_Email" ColumnName="Client_Email" />
+          <ScalarProperty Name="Client_TFN" ColumnName="Client_TFN" />
+          <ScalarProperty Name="Client_Address" ColumnName="Client_Address" />
+          <ScalarProperty Name="Client_City" ColumnName="Client_City" />
+          <ScalarProperty Name="Client_State" ColumnName="Client_State" />
+          <ScalarProperty Name="Client_CityPostCode" ColumnName="Client_CityPostCode" />
+          <ScalarProperty Name="Client_Signature" ColumnName="Client_Signature" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Faktura">
+      <EntityTypeMapping TypeName="MoiFakturiModel.Faktura">
+        <MappingFragment StoreEntitySet="Faktura">
+          <ScalarProperty Name="Faktura_ID" ColumnName="Faktura_ID" />
+          <ScalarProperty Name="Firm_ID" ColumnName="Firm_ID" />
+          <ScalarProperty Name="Client_ID" ColumnName="Client_ID" />
+          <ScalarProperty Name="Faktura_Status" ColumnName="Faktura_Status" />
+          <ScalarProperty Name="Faktura_Suma" ColumnName="Faktura_Suma" />
+          <ScalarProperty Name="Faktura_DatumIzdavanje" ColumnName="Faktura_DatumIzdavanje" />
+          <ScalarProperty Name="Faktura_DatumDospevanje" ColumnName="Faktura_DatumDospevanje" />
+          <ScalarProperty Name="Faktura_TotalDDV" ColumnName="Faktura_TotalDDV" />
+          <ScalarProperty Name="Faktura_Zabeleska" ColumnName="Faktura_Zabeleska" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Firm">
+      <EntityTypeMapping TypeName="MoiFakturiModel.Firm">
+        <MappingFragment StoreEntitySet="Firm">
+          <ScalarProperty Name="Firm_ID" ColumnName="Firm_ID" />
+          <ScalarProperty Name="Firm_Name" ColumnName="Firm_Name" />
+          <ScalarProperty Name="Firm_Email" ColumnName="Firm_Email" />
+          <ScalarProperty Name="Firm_Password" ColumnName="Firm_Password" />
+          <ScalarProperty Name="Firm_Address" ColumnName="Firm_Address" />
+          <ScalarProperty Name="Firm_City" ColumnName="Firm_City" />
+          <ScalarProperty Name="Firm_State" ColumnName="Firm_State" />
+          <ScalarProperty Name="Firm_PhoneNumber" ColumnName="Firm_PhoneNumber" />
+          <ScalarProperty Name="Firm_WebPage" ColumnName="Firm_WebPage" />
+          <ScalarProperty Name="Firm_TFN" ColumnName="Firm_TFN" />
+          <ScalarProperty Name="Firm_TransactionAccount" ColumnName="Firm_TransactionAccount" />
+          <ScalarProperty Name="Firm_Bank" ColumnName="Firm_Bank" />
+          <ScalarProperty Name="Firm_CityPostCode" ColumnName="Firm_CityPostCode" />
+          <ScalarProperty Name="Firm_Logo" ColumnName="Firm_Logo" />
+          <ScalarProperty Name="Firm_Signature" ColumnName="Firm_Signature" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="MoiFakturiModel.Products">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+          <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
+          <ScalarProperty Name="Product_Price" ColumnName="Product_Price" />
+          <ScalarProperty Name="Product_DDV_Percent" ColumnName="Product_DDV_Percent" />
+          <ScalarProperty Name="Product_Price_with_DDV" ColumnName="Product_Price_with_DDV" />
+          <ScalarProperty Name="Firm_ID" ColumnName="Firm_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,107 @@
+﻿@model FakturiSecond.Clients
+
+@{
+    ViewBag.Title = "Промени клиент";
+    Layout = "~/Views/Dashboard/Layout.cshtml";
+}
+
+<h2>Промени клиент #@Model.Client_ID</h2>
+
+
+@using (Html.BeginForm("Edit", "Clients", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Client_ID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Client_Name, "Назив на клиент", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Client_Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Client_Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Client_Email, "Е-маил на клиент", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Client_Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Client_Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Client_Address, "Адреса на клиент", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Client_Address, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Client_Address, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-10">
+            <div class="form-group">
+                <table class="table" align="center">
+                    <tr>
+                        <td colspan="2">
+                            <div>
+                                @Html.LabelFor(model => model.Client_CityPostCode, "Поштенски број", htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.Client_CityPostCode, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Client_CityPostCode, "", new { @class = "text-danger" })                                
+                            </div>
+                        </td>
+                        <td colspan="5">
+                            <div>
+                                @Html.LabelFor(model => model.Client_City, "Град", htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.Client_City, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Client_City, "", new { @class = "text-danger" })
+                            </div>
+                        </td>
+                        <td colspan="5">
+                            <div>
+                                @Html.LabelFor(model => model.Client_State, "Држава", htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.Client_State, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Client_State, "", new { @class = "text-danger" })
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Client_TFN, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Client_TFN, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Client_TFN, "", new { @class = "text-danger" })
+            </div>
+        </div>        
+
+        <hr />
+        <div class="form-group">
+            @Html.LabelFor(model => model.Client_Signature, "Електронски потпис", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-10">
+                <img src="~/images/ClientSignature/@Model.Client_Signature" width="250" height="250" />
+                <input type="file" id="file" name="file" />
+            </div>
+        </div>
+        <hr />
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Зачувај" class="btn btn-outline-success btn-lg" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("<- Мои клиенти", "Index")
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

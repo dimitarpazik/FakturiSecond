@@ -1,0 +1,68 @@
+﻿@model FakturiSecond.Products
+
+@{
+    ViewBag.Title = "Бриши производ?";
+    Layout = "~/Views/Dashboard/Layout.cshtml";
+}
+
+<h3>Дали сигурно сакате да го избришете овој производ?</h3>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+
+        <p align="right">
+            <input type="submit" value="Избриши" class="btn btn-outline-danger btn-lg" />
+        </p>
+    </div>
+}
+<div>
+    <hr />
+    <h2>Производ #@Model.Product_ID</h2>
+    <dl class="dl-horizontal">
+        <dt>
+            Назив на производ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product_Name)
+        </dd>
+
+        <dt>
+            Цена на производ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product_Price) МКД
+        </dd>
+
+        <dt>
+            Даночна ставка (ДДВ) за производ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product_DDV_Percent)%
+        </dd>
+
+        <dt>
+            Крајна цена (вклучувајќи и ДДВ од @Model.Product_DDV_Percent%)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product_Price_with_DDV)%
+        </dd>
+
+        <dt>
+            Компанија на производ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Firm.Firm_Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("<- Мои производи", "Index")
+</p>

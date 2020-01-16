@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MoiFakturiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Clients">
+    <Key>
+      <PropertyRef Name="Client_ID" />
+    </Key>
+    <Property Name="Client_ID" Type="Int32" Nullable="false" />
+    <Property Name="Client_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Client_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Client_TFN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Client_Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Client_City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Client_State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Client_CityPostCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Client_Signature" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Faktura" Relationship="Self.FK_Faktura_Clients" FromRole="Clients" ToRole="Faktura" />
+  </EntityType>
+  <EntityType Name="Faktura">
+    <Key>
+      <PropertyRef Name="Faktura_ID" />
+    </Key>
+    <Property Name="Faktura_ID" Type="Int32" Nullable="false" />
+    <Property Name="Firm_ID" Type="Int32" />
+    <Property Name="Client_ID" Type="Int32" />
+    <Property Name="Faktura_Status" Type="Int32" />
+    <Property Name="Faktura_Suma" Type="Double" />
+    <Property Name="Faktura_DatumIzdavanje" Type="DateTime" Precision="3" />
+    <Property Name="Faktura_DatumDospevanje" Type="DateTime" Precision="3" />
+    <Property Name="Faktura_TotalDDV" Type="Double" />
+    <Property Name="Faktura_Zabeleska" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Clients" Relationship="Self.FK_Faktura_Clients" FromRole="Faktura" ToRole="Clients" />
+    <NavigationProperty Name="Firm" Relationship="Self.FK_Faktura_Firm" FromRole="Faktura" ToRole="Firm" />
+  </EntityType>
+  <EntityType Name="Firm">
+    <Key>
+      <PropertyRef Name="Firm_ID" />
+    </Key>
+    <Property Name="Firm_ID" Type="Int32" Nullable="false" />
+    <Property Name="Firm_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Firm_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Firm_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Firm_Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Firm_City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Firm_State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Firm_PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Firm_WebPage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Firm_TFN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Firm_TransactionAccount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Firm_Bank" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Firm_CityPostCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Firm_Logo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Firm_Signature" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Faktura" Relationship="Self.FK_Faktura_Firm" FromRole="Firm" ToRole="Faktura" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_Products_Firm" FromRole="Firm" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="Product_ID" />
+    </Key>
+    <Property Name="Product_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Product_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Product_Price" Type="Double" />
+    <Property Name="Product_DDV_Percent" Type="Int32" />
+    <Property Name="Product_Price_with_DDV" Type="Double" />
+    <Property Name="Firm_ID" Type="Int32" />
+    <NavigationProperty Name="Firm" Relationship="Self.FK_Products_Firm" FromRole="Products" ToRole="Firm" />
+  </EntityType>
+  <Association Name="FK_Faktura_Clients">
+    <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
+    <End Role="Faktura" Type="Self.Faktura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="Client_ID" />
+      </Principal>
+      <Dependent Role="Faktura">
+        <PropertyRef Name="Client_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Faktura_Firm">
+    <End Role="Firm" Type="Self.Firm" Multiplicity="0..1" />
+    <End Role="Faktura" Type="Self.Faktura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Firm">
+        <PropertyRef Name="Firm_ID" />
+      </Principal>
+      <Dependent Role="Faktura">
+        <PropertyRef Name="Firm_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Products_Firm">
+    <End Role="Firm" Type="Self.Firm" Multiplicity="0..1" />
+    <End Role="Products" Type="Self.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Firm">
+        <PropertyRef Name="Firm_ID" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="Firm_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MoiFakturiEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Clients" EntityType="Self.Clients" />
+    <EntitySet Name="Faktura" EntityType="Self.Faktura" />
+    <EntitySet Name="Firm" EntityType="Self.Firm" />
+    <EntitySet Name="Products" EntityType="Self.Products" />
+    <AssociationSet Name="FK_Faktura_Clients" Association="Self.FK_Faktura_Clients">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="Faktura" EntitySet="Faktura" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Faktura_Firm" Association="Self.FK_Faktura_Firm">
+      <End Role="Firm" EntitySet="Firm" />
+      <End Role="Faktura" EntitySet="Faktura" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Products_Firm" Association="Self.FK_Products_Firm">
+      <End Role="Firm" EntitySet="Firm" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

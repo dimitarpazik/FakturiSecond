@@ -1,0 +1,60 @@
+﻿@model FakturiSecond.Products
+
+@{
+    ViewBag.Title = "Детали за производ";
+    Layout = "~/Views/Dashboard/Layout.cshtml";
+}
+
+<h2>Детали за производ #@Model.Product_ID</h2>
+<p align="right">
+    <button class="btn btn-outline-warning btn-lg" type="button">@Html.ActionLink("Промени", "Edit", new { id = Model.Product_ID })</button>
+</p>
+
+<div>    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Назив на производ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product_Name)
+        </dd>
+
+        <dt>
+            Цена на производ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product_Price) МКД
+        </dd>
+
+        <dt>
+            Даночна ставка (ДДВ) за производ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product_DDV_Percent)%
+        </dd>
+
+        <dt>
+            Крајна цена (вклучувајќи и ДДВ од @Model.Product_DDV_Percent%)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product_Price_with_DDV)%
+        </dd>
+
+        <dt>
+            Компанија на производ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Firm.Firm_Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("<- Мои производи", "Index")
+</p>

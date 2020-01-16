@@ -1,0 +1,137 @@
+﻿@model FakturiSecond.Firm
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Dashboard/Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Firm</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Firm_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Firm_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Firm_Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Firm_Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Firm_Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Firm_Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Firm_Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Firm_Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Firm_City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Firm_City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Firm_State)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Firm_State)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Firm_PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Firm_PhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Firm_WebPage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Firm_WebPage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Firm_TFN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Firm_TFN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Firm_TransactionAccount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Firm_TransactionAccount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Firm_Bank)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Firm_Bank)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Firm_CityPostCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Firm_CityPostCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Firm_Logo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Firm_Logo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Firm_Signature)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Firm_Signature)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

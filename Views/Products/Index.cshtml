@@ -1,0 +1,53 @@
+﻿@model IEnumerable<FakturiSecond.Products>
+
+@{
+    ViewBag.Title = "Мои производи";
+    Layout = "~/Views/Dashboard/Layout.cshtml";
+}
+
+<h2>Моите производи</h2>
+
+<p align="right">
+    <button class="btn btn-outline-success btn-lg" type="button">@Html.ActionLink("Нов производ", "Create")</button>
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            Назив на производ
+        </th>
+        <th>
+            Цена
+        </th>
+        <th>
+            Даночна ставка (ДДВ)
+        </th>
+        <th>
+            Цена со ДДВ
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product_Price) МКД
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product_DDV_Percent)%
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product_Price_with_DDV) МКД
+        </td>
+        <td>
+            @Html.ActionLink("Промени", "Edit", new { id = item.Product_ID }) |
+            @Html.ActionLink("Повеќе", "Details", new { id = item.Product_ID }) |
+            @Html.ActionLink("Избриши", "Delete", new { id = item.Product_ID })
+        </td>
+    </tr>
+}
+
+</table>
