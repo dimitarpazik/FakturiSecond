@@ -1,0 +1,83 @@
+﻿@model FakturiSecond.Faktura
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Dashboard/Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Faktura</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Faktura_Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Faktura_Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Faktura_Suma)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Faktura_Suma)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Faktura_DatumIzdavanje)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Faktura_DatumIzdavanje)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Faktura_DatumDospevanje)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Faktura_DatumDospevanje)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Faktura_TotalDDV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Faktura_TotalDDV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Faktura_Zabeleska)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Faktura_Zabeleska)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clients.Client_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clients.Client_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Firm.Firm_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Firm.Firm_Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Faktura_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

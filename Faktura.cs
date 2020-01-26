@@ -9,9 +9,11 @@
 
 namespace FakturiSecond
 {
+    using FakturiSecond.Models;
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Faktura
     {
         public int Faktura_ID { get; set; }
@@ -20,11 +22,12 @@ namespace FakturiSecond
         public Nullable<int> Faktura_Status { get; set; }
         public Nullable<double> Faktura_Suma { get; set; }
         public Nullable<System.DateTime> Faktura_DatumIzdavanje { get; set; }
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> Faktura_DatumDospevanje { get; set; }
         public Nullable<double> Faktura_TotalDDV { get; set; }
         public string Faktura_Zabeleska { get; set; }
-    
-        public virtual Clients Clients { get; set; }
+
+        public virtual Clients Clients { get; set; }        
         public virtual Firm Firm { get; set; }
     }
 }

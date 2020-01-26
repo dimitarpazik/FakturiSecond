@@ -22,18 +22,16 @@ namespace FakturiSecond.Controllers
         }
 
         // GET: Firms/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details()
         {
-            if (id == null)
+            int firm_id;
+            if (Session["Firm_ID"] != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                firm_id = (int)Session["Firm_ID"];
+                Firm firm = db.Firm.Find(firm_id);
+                return View(firm);
             }
-            Firm firm = db.Firm.Find(id);
-            if (firm == null)
-            {
-                return HttpNotFound();
-            }
-            return View(firm);
+            return HttpNotFound();
         }
 
         // GET: Firms/Create

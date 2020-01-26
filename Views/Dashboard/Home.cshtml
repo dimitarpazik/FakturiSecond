@@ -1,0 +1,496 @@
+﻿@model FakturiSecond.Models.FirmDashboard
+
+@{
+    /**/
+
+    ViewBag.Title = "Почетна";
+    Layout = "~/Views/Dashboard/Layout.cshtml";
+}
+
+<h4>Добредојдовте!</h4>
+<hr />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card-counter darkBlue">
+                <i class="fas fa-clipboard-list lista"></i>
+                <span class="count-numbers">@Model.BrojFakturi</span>
+                <span class="count-name">ВКУПНО ФАКТУРИ</span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card-counter blue">
+                <i class="fa fa-users lista"></i>
+                <span class="count-numbers">@Model.BrojKlienti</span>
+                <span class="count-name">КЛИЕНТИ</span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card-counter darkPurple">
+                <i class="fa fa-list-ul lista"></i>
+                <span class="count-numbers">@Model.BrojProizvodi</span>
+                <span class="count-name">ПРОИЗВОДИ</span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card-counter purple">
+                <i class="fa fa-check-circle lista"></i>
+                <span class="count-numbers">@Model.BrojAktivniFakturi</span>
+                <span class="count-name">АКТИВНИ ФАКТУРИ</span>
+            </div>
+        </div>
+    </div>
+</div>
+<hr />
+<div> 
+
+</div>
+<div> 
+
+</div>
+
+<h4>Последните 4 фактури:</h4>
+
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,300italic,100italic,400italic,500' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+<div class="body">
+
+    <div class="pricing-table-group">
+        @foreach (var item in Model.Fakturi)
+        {
+            <div class="card">
+                <div class="body">
+                    <div class="cost">
+                        <div class="value">
+                            <p>МКД</p>
+                            <span>@item.Faktura_Suma  </span>
+
+                        </div>
+                        <div></div>
+                        <div>                            
+                        </div>
+                    </div>
+                    <div class="description">
+                        <span class="desc">
+                            Фактура#
+                            <strong>@item.Faktura_ID</strong>
+                        </span>
+                        <span class="desc">
+                            Клиент:
+                            <strong> @item.Client_ID</strong>
+                        </span>
+                        <span class="desc">
+                            Издавање:
+                            <strong> @item.Faktura_DatumIzdavanje</strong>
+                        </span>
+                        <span class="desc">
+                            Доспевање:
+                            <strong> @item.Faktura_DatumDospevanje</strong>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+<style>
+    .card-counter {
+        box-shadow: 2px 2px 10px #DADADA;
+        margin: 5px;
+        padding: 20px 10px;
+        background-color: #fff;
+        height: 100px;
+        border-radius: 5px;
+        transition: .3s linear all;
+    }
+
+        .card-counter:hover {
+            box-shadow: 4px 4px 20px #DADADA;
+            transition: .3s linear all;
+        }
+
+        .card-counter.primary {
+            background-color: #007bff;
+            color: #FFF;
+        }
+
+        .card-counter.danger {
+            background-color: #ef5350;
+            color: #FFF;
+        }
+
+        .card-counter.success {
+            background-color: #66bb6a;
+            color: #FFF;
+        }
+
+        .card-counter.basic {
+            background-color: #808080;
+            color: #FFF;
+        }
+
+        .card-counter.orange {
+            background-color: #ffa500;
+            color: #FFF;
+        }
+
+        .card-counter.purple {
+            background-color: #660066;
+            color: #FFF;
+        }
+        .card-counter.darkBlue {
+            background-color: #00004d;
+            color: #FFF;
+        }
+
+        .card-counter.darkPurple {
+            background-color: #330033;
+            color: #FFF;
+        }
+
+        .card-counter.blue {
+            background-color: #0000ff;
+            color: #FFF;
+        }
+
+
+    .lista {
+        font-size: 4.25em;
+        opacity: 0.2;
+    }
+
+    .card-counter.info {
+        background-color: #26c6da;
+        color: #FFF;
+    }
+
+    .card-counter.pink {
+        background-color: #ff0066;
+        color: #FFF;
+    }
+    
+
+
+    .card-counter .count-numbers {
+        position: absolute;
+        right: 35px;
+        top: 20px;
+        font-size: 32px;
+        display: block;
+    }
+
+    .card-counter .count-name {
+        position: absolute;
+        right: 35px;
+        top: 65px;
+        font-style: italic;
+        text-transform: capitalize;
+        opacity: 0.5;
+        display: block;
+        font-size: 18px;
+    }
+</style>
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,300italic,100italic,400italic,500" />
+<style>
+
+    h1 {
+        font-size: 55px;
+        font-family: "Roboto", sanf-serif;
+        font-weight: 300;
+        color: #828282;
+    }
+
+    .body {
+        height: auto;
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        flex-direction: column;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+        background: #F2F2F2;
+    }
+
+    .pricing-table-group {
+        width: auto;
+        height: auto;
+        margin: 0px;
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-pack: center;
+        justify-content: center;
+    }
+
+        .pricing-table-group .card:nth-child(1), .pricing-table-group .card-w:nth-child(1) {
+            border: 1px solid #4d9900;
+            z-index: 4;
+        }
+
+            .pricing-table-group .card:nth-child(1) .title, .pricing-table-group .card-w:nth-child(1) .title {
+                color: #fff;
+            }
+
+            .pricing-table-group .card:nth-child(1) .body .description .buyBtn, .pricing-table-group .card-w:nth-child(1) .body .description .buyBtn {
+                border: 1px solid #4d9900;
+                background: transparent;
+                color: #4d9900;
+            }
+
+                .pricing-table-group .card:nth-child(1) .body .description .buyBtn:hover, .pricing-table-group .card-w:nth-child(1) .body .description .buyBtn:hover {
+                    border: 1px solid #4d9900;
+                    background: #4d9900;
+                    font-weight: regular;
+                    color: white;
+                }
+
+            .pricing-table-group .card:nth-child(1) .cost, .pricing-table-group .card-w:nth-child(1) .cost {
+                background: #4d9900;
+            }
+
+                .pricing-table-group .card:nth-child(1) .cost .value span, .pricing-table-group .card:nth-child(1) .cost .value p, .pricing-table-group .card-w:nth-child(1) .cost .value span, .pricing-table-group .card-w:nth-child(1) .cost .value p {
+                    color: white !important;
+                }
+
+        .pricing-table-group .card:nth-child(2), .pricing-table-group .card-w:nth-child(2) {
+            z-index: 3;
+            border: 1px solid #4d9900;
+        }
+
+            .pricing-table-group .card:nth-child(2) .title, .pricing-table-group .card-w:nth-child(2) .title {
+                color: #fff;
+            }
+
+            .pricing-table-group .card:nth-child(2) .body .description .buyBtn, .pricing-table-group .card-w:nth-child(2) .body .description .buyBtn {
+                border: 1px solid #4d9900;
+                background: transparent;
+                color: #4d9900;
+            }
+
+                .pricing-table-group .card:nth-child(2) .body .description .buyBtn:hover, .pricing-table-group .card-w:nth-child(2) .body .description .buyBtn:hover {
+                    border: 1px solid #4d9900;
+                    background: #4d9900;
+                    font-weight: regular;
+                    color: white;
+                }
+
+            .pricing-table-group .card:nth-child(2) .cost, .pricing-table-group .card-w:nth-child(2) .cost {
+                background: #4d9900;
+            }
+
+                .pricing-table-group .card:nth-child(2) .cost .value span, .pricing-table-group .card:nth-child(2) .cost .value p, .pricing-table-group .card-w:nth-child(2) .cost .value span, .pricing-table-group .card-w:nth-child(2) .cost .value p {
+                    color: white !important;
+                }
+
+        .pricing-table-group .card:nth-child(3), .pricing-table-group .card-w:nth-child(3) {
+            border: 1px solid #4d9900;
+            z-index: 2;
+        }
+
+            .pricing-table-group .card:nth-child(3) .title, .pricing-table-group .card-w:nth-child(3) .title {
+                color: #fff;
+            }
+
+            .pricing-table-group .card:nth-child(3) .body .description .buyBtn, .pricing-table-group .card-w:nth-child(3) .body .description .buyBtn {
+                border: 1px solid #4d9900;
+                background: transparent;
+                color: #4d9900;
+            }
+
+                .pricing-table-group .card:nth-child(3) .body .description .buyBtn:hover, .pricing-table-group .card-w:nth-child(3) .body .description .buyBtn:hover {
+                    border: 1px solid #4d9900;
+                    background: #4d9900;
+                    font-weight: regular;
+                    color: white;
+                }
+
+            .pricing-table-group .card:nth-child(3) .cost, .pricing-table-group .card-w:nth-child(3) .cost {
+                background: #4d9900;
+            }
+
+                .pricing-table-group .card:nth-child(3) .cost .value span, .pricing-table-group .card:nth-child(3) .cost .value p, .pricing-table-group .card-w:nth-child(3) .cost .value span, .pricing-table-group .card-w:nth-child(3) .cost .value p {
+                    color: white !important;
+                }
+
+        .pricing-table-group .card:nth-child(4) {
+            border: 1px solid #4d9900;
+        }
+
+            .pricing-table-group .card:nth-child(4) .title {
+                color: #fff;
+            }
+
+            .pricing-table-group .card:nth-child(4) .body .cost {
+                background: #4d9900;
+            }
+
+                .pricing-table-group .card:nth-child(4) .body .cost .value span, .pricing-table-group .card:nth-child(4) .body .cost .value p {
+                    color: white !important;
+                }
+
+           
+
+        .pricing-table-group .card {
+            border: 1px solid #bcbcbc;
+            width: 250px;
+            height: 100%;
+            background: #fff;
+            margin: 8px;
+            padding: 0;
+            -webkit-transition: all 0.6s ease-in-out;
+            transition: all 0.6s ease-in-out;
+            box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+        }
+
+            .pricing-table-group .card .body {
+                width: 100%;
+                height: 280px;
+                display: -webkit-box;
+                display: flex;
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                flex-direction: column;
+                -webkit-box-align: start;
+                align-items: flex-start;
+                -webkit-box-pack: start;
+                justify-content: flex-start;
+            }
+
+                .pricing-table-group .card .body .description {
+                    width: 100%;
+                    display: -webkit-box;
+                    display: flex;
+                    -webkit-box-orient: vertical;
+                    -webkit-box-direction: normal;
+                    flex-direction: column;
+                    -webkit-box-align: center;
+                    align-items: center;
+                    -webkit-box-pack: center;
+                    justify-content: center;
+                    background: #fff;
+                }
+
+
+
+                    .pricing-table-group .card .body .description .desc:first-child {
+                        color: #727272;
+                        font-size: 18px;
+                        font-family: "Roboto", sanf-serif;
+                        font-weight: 500;
+                        padding: 20px 0 10px 0;
+                    }
+
+                        .pricing-table-group .card .body .description .desc:first-child strong {
+                            color: #606060;
+                            font-size: 28px;
+                            font-family: "Roboto", sanf-serif;
+                            font-weight: 300;
+                        }
+
+                    .pricing-table-group .card .body .description .desc {
+                        max-width: 250px;
+                        display: -webkit-box;
+                        display: flex;
+                        -webkit-box-align: center;
+                        align-items: center;
+                        -webkit-box-pack: justify;
+                        justify-content: space-between;
+                        height: 35px;
+                        margin: 5px;
+                        color: #606060;
+                        font-size: 14px;
+                        font-family: "Roboto", sanf-serif;
+                        font-weight: 300;
+                        padding: 8px 0;
+                    }
+
+                        .pricing-table-group .card .body .description .desc:first-child {
+                            border-bottom: 1px solid #bcbcbc;
+                        }
+
+                        .pricing-table-group .card .body .description .desc strong {
+                            color: #606060;
+                            font-size: 16px;
+                            font-family: "Roboto", sanf-serif;
+                            font-weight: 500;
+                            margin-right: 8px;
+                        }
+
+                .pricing-table-group .card .body .cost {
+                    height: 80px;
+                    width: 100%;
+                    display: -webkit-box;
+                    display: flex;
+                    -webkit-box-orient: horizontal;
+                    -webkit-box-direction: normal;
+                    flex-direction: row;
+                }
+
+                    .pricing-table-group .card .body .cost .title {
+                        display: -webkit-box;
+                        display: flex;
+                        -webkit-box-orient: vertical;
+                        -webkit-box-direction: normal;
+                        flex-direction: column;
+                        -webkit-box-align: center;
+                        align-items: center;
+                        -webkit-box-pack: center;
+                        justify-content: center;
+                        font-size: 18px;
+                        font-family: "Kaushan Script", cursive;
+                        margin: 0 0 15px 0;
+                        -webkit-transform: rotate(-5deg);
+                        transform: rotate(-5deg);
+                        padding: 5px;
+                        text-transform: uppercase;
+                    }
+
+                    .pricing-table-group .card .body .cost .value {
+                        width: 100%;
+                        height: 100%;
+                        display: -webkit-box;
+                        display: flex;
+                        -webkit-box-align: center;
+                        align-items: center;
+                        -webkit-box-pack: center;
+                        justify-content: center;
+                    }
+
+                        .pricing-table-group .card .body .cost .value span {
+                            color: #727272;
+                            font-size: 50px;
+                            font-family: "Roboto", sanf-serif;
+                            font-weight: 200;
+                        }
+
+            .pricing-table-group .card .header {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                font-family: "Roboto", sanf-serif;
+                font-weight: 300;
+                font-size: 20px;
+                height: 50px;
+                background: black;
+                color: white;
+                display: -webkit-box;
+                display: flex;
+                -webkit-box-align: center;
+                align-items: center;
+                -webkit-box-pack: center;
+                justify-content: center;
+            }
+
+        
+
+</style>
+

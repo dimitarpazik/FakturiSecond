@@ -51,3 +51,6 @@ C:\Users\User\Desktop\Diplomska rabota\CodeProject\FakturiSecond\FakturiSecond\o
 C:\Users\User\Desktop\Diplomska rabota\CodeProject\FakturiSecond\FakturiSecond\obj\Debug\FakturiSecond.csproj.CopyComplete
 C:\Users\User\Desktop\Diplomska rabota\CodeProject\FakturiSecond\FakturiSecond\obj\Debug\FakturiSecond.dll
 C:\Users\User\Desktop\Diplomska rabota\CodeProject\FakturiSecond\FakturiSecond\obj\Debug\FakturiSecond.pdb
+C:\Users\User\Desktop\Diplomska rabota\CodeProject\FakturiSecond\FakturiSecond\bin\itextsharp.dll
+C:\Users\User\Desktop\Diplomska rabota\CodeProject\FakturiSecond\FakturiSecond\bin\itextsharp.xml
+C:\Users\User\Desktop\Diplomska rabota\CodeProject\FakturiSecond\FakturiSecond\bin\EASendMail.dll

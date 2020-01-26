@@ -1,0 +1,71 @@
+﻿@model IEnumerable<FakturiSecond.Faktura>
+
+@{
+    ViewBag.Title = "Мои фактури";
+    Layout = "~/Views/Dashboard/Layout.cshtml";
+}
+
+<h2>Моите фактури</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            Број на фактура
+        </th>
+        <th>
+            Назив на клиент
+        </th>
+        <th>
+            Износ
+        </th>
+        <th>
+            Датум на издавање
+        </th>
+        <th>
+            Датум на доспевање
+        </th>
+        <th>
+            Активна?
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                #@Html.DisplayFor(modelItem => item.Faktura_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Clients.Client_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Faktura_Suma) МКД
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Faktura_DatumIzdavanje)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Faktura_DatumDospevanje)
+            </td>
+            <td align="center">
+                @if (item.Faktura_Status == 1)
+                {
+                    @Html.CheckBox("isActive", true)
+                }
+                else
+                {
+                    @Html.CheckBox("isActive", false)
+                }
+            </td>
+
+            <td align="center" style="color:indigo; text-decoration:underline">
+                 @Html.ActionLink("Променете активност", "Edit", new { id = item.Faktura_ID })
+                <button class="btn btn-outline-danger btn-sm">@Html.ActionLink("Види PDF", "Details", new { id = item.Faktura_ID })</button>
+                @*@Html.ActionLink("Избриши", "Delete", new { id = item.Faktura_ID })*@
+            </td>
+        </tr>
+    }
+
+</table>

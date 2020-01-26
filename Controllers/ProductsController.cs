@@ -17,8 +17,14 @@ namespace FakturiSecond.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            var products = db.Products.Include(p => p.Firm);
-            return View(products.ToList());
+            if (Session["Firm_ID"] != null)
+            {
+                int firm_id = (int)Session["Firm_ID"];
+                var products = db.Products.Include(p => p.Firm).Where(p => p.Firm_ID == firm_id);
+                return View(products.ToList());
+            }
+            return View("~/Views/Account/Error.cshtml");
+
         }
 
         // GET: Products/Details/5

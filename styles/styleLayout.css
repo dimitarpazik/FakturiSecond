@@ -46,17 +46,21 @@ tr.rows-design {
 }
 
 img.imgLogo {
-    border-radius: 10px;
-    width: 150px;
-    height:150px;
+    border-radius: 20px;
+    width: 100px;
+    height: 100px;
     max-width: 250px;
-    box-sizing: border-box;  
-    
+    box-sizing: border-box;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 5px solid #9fc487;
+    /*#000066*/
 }
 
-.w3footeragile {
+/*.w3footeragile {
     margin: 80px 20px 0px 250px;
-}
+}*/
 
 /* ---------------------------------------------------
     SIDEBAR STYLE
@@ -80,9 +84,9 @@ img.imgLogo {
 
     #sidebar .sidebar-header {
         padding: 20px;
-        
-        box-sizing:border-box;
+        box-sizing: border-box;
         background: #537b35;
+        justify-content: center;
     }
 
     #sidebar ul.components {
@@ -185,14 +189,14 @@ dd {
     padding: 0 0 0.5em 0;
 }
 
-footer {
+/*footer {
     background: #f8f9fa;
     padding: 10px 20px;
     display: block;
     box-sizing: border-box;
     margin-left: 250px;
     margin: 0 0 0 110px;
-}
+}*/
 
 
 /* ---------------------------------------------------
@@ -205,6 +209,28 @@ footer {
     transition: all 0.3s;
 }
 
+.w3footeragile {
+    margin-bottom: 0px;
+    padding: 10px 20px;
+    display: inline;
+    box-sizing: border-box;
+    padding: 10px 20px;
+    margin: 0 0 0 0;
+}
+
+    .w3footeragile p a {
+        color: #999;
+        font-weight: 700;
+    }
+
+    .w3footeragile p {
+        letter-spacing: 2px;
+        color: #999;
+    }
+
+        .w3footeragile p a:hover {
+            color: #999;
+        }
 
 /* ---------------------------------------------------
     MEDIAQUERIES
